@@ -9,6 +9,17 @@
   <body>
     <canvas id="canvas"></canvas>
     <div class="tips">点击屏幕试一下~</div>
+    <!-- 
+    gl_Position、gl_PointSize、gl_FragColor 是 GLSL 的内置属性
+
+    gl_Position：顶点的裁剪坐标系坐标，包含 X, Y, Z，W 四个坐标分量，顶点着色器接收到这个坐标之后，对它进行透视除法，
+                即将各个分量同时除以 W，转换成 NDC 坐标，NDC 坐标每个分量的取值范围都在【-1, 1】之间，GPU 获取这个属性值作为顶点的最终位置进行绘制
+
+    gl_PointSize：绘制到屏幕的点的大小，需要注意的是，gl_PointSize只有在绘制图元是点的时候才会生效。当我们绘制线段或者三角形的时候，gl_PointSize是不起作用的
+
+    gl_FragColor：片元（像素）颜色，包含 R, G, B, A 四个颜色分量，且每个分量的取值范围在【0,1】之间，GPU 获取这个值作为像素的最终颜色进行着色
+
+    -->
     <!-- 定点着色器 -->
     <script type="shader-source" id="vertexShader">
       //浮点数设置为中等精度
