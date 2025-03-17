@@ -9,6 +9,7 @@
   <body>
     <canvas id="canvas"></canvas>
     <div class="tips">点击屏幕试一下~</div>
+    <!-- 定点着色器 -->
     <script type="shader-source" id="vertexShader">
       //浮点数设置为中等精度
       precision mediump float;
@@ -27,6 +28,7 @@
       	gl_PointSize = 10.0;
       }
     </script>
+    <!-- 片元着色器 -->
     <script type="shader-source" id="fragmentShader">
       //浮点数设置为中等精度
       precision mediump float;
