@@ -14,3 +14,14 @@
   - `vec * 浮点数`： vec2(x, y) _ 2.0 = vec(x _ 2.0, y \* 2.0)。
   - `vec2 * vec2`：vec2(x1, y1) _ vec2(x2, y2) = vec2(x1 _ x2, y1 \* y2)。
   - 加减乘除规则基本一致。但是要注意一点，如果参与运算的是两个 vec 向量，那么这两个 vec 的维数必须相同。
+
+## Javascript
+
+- 连接着色器程序
+  - `createShader`：创建着色器对象
+  - `shaderSource`：提供着色器源码
+  - `compileShader`：编译着色器对象
+  - `createProgram`：创建着色器程序
+  - `attachShader`：绑定着色器对象
+  - `linkProgram`：链接着色器程序
+  - `useProgram`：启用着色器程序
