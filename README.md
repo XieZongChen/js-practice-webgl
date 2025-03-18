@@ -30,3 +30,8 @@
   - `getUniformLocation`：找到着色器中的 uniform 变量地址
   - `vertexAttrib2f`：给 attribute 变量传递两个浮点数
   - `uniform4f`：给 uniform 变量传递四个浮点数。
+
+## WebGL
+
+- drawArrays: 用指定的图元进行绘制
+- gl.POINTS: 将绘制图元类型设置成点图元
