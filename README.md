@@ -25,3 +25,6 @@
   - `attachShader`：绑定着色器对象
   - `linkProgram`：链接着色器程序
   - `useProgram`：启用着色器程序
+- 给着色器传递数据
+    - getAttribLocation：找到着色器中的 attribute 变量地址
+    - getUniformLocation：找到着色器中的 uniform 变量地址
