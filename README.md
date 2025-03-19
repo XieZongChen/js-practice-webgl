@@ -36,3 +36,9 @@
   - `getUniformLocation`：找到着色器中的 uniform 变量地址
   - `vertexAttrib2f`：给 attribute 变量传递两个浮点数
   - `uniform4f`：给 uniform 变量传递四个浮点数。
+- 使用缓冲区传递数据
+  - `createBuffer`：创建 buffer
+  - `bindBuffer`：绑定某个缓冲区对象为当前缓冲区
+  - `bufferData`：往缓冲区中复制数据
+  - `enableVertexAttribArray`：启用顶点属性
+  - `vertexAttribPointer`：设置顶点属性从缓冲区中读取数据的方式
