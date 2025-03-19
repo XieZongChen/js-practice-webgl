@@ -15,8 +15,14 @@
   - `vec2 * vec2`：vec2(x1, y1) \* vec2(x2, y2) = vec2(x1 \* x2, y1 \* y2)。
   - 加减乘除规则基本一致。但是要注意一点，如果参与运算的是两个 vec 向量，那么这两个 vec 的维数必须相同。
 
-## Javascript
+## WebGL
 
+- drawArrays: 用指定的图元进行绘制
+- gl.POINTS: 将绘制图元类型设置成点图元
+- 三角形图元分类
+  - gl.TRIANGLES：基本三角形
+  - gl.TRIANGLE_STRIP：三角带
+  - gl.TRIANGLE_FAN：三角扇
 - 连接着色器程序
   - `createShader`：创建着色器对象
   - `shaderSource`：提供着色器源码
@@ -30,8 +36,3 @@
   - `getUniformLocation`：找到着色器中的 uniform 变量地址
   - `vertexAttrib2f`：给 attribute 变量传递两个浮点数
   - `uniform4f`：给 uniform 变量传递四个浮点数。
-
-## WebGL
-
-- drawArrays: 用指定的图元进行绘制
-- gl.POINTS: 将绘制图元类型设置成点图元
