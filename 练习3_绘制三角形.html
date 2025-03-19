@@ -70,8 +70,9 @@
       gl.vertexAttrib2f(a_Screen_Size, canvas.width, canvas.height);
 
       // 存储三角形顶点，x y 坐标按顺序存储，例如 [1, 0, 0, 1, 0, 0]，使用时 idx 为偶数时为 x 坐标，为奇数时为 y 坐标，一个偶数 idx 的值和紧随其后奇数 idx 的值组成一个点。
-      let positions = []; 
+      let positions = [];
 
+      // 创建一个缓冲区，通过缓冲区可以向着色器传递多个顶点数据
       let buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
 
