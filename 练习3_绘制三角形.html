@@ -99,7 +99,7 @@
         positions.push(e.pageX, e.pageY);
         // 顶点信息为 6 个数据即 3 个顶点时执行绘制操作，因为三角形由三个顶点组成。
         if (positions.length % 6 == 0) {
-          // 先往缓冲区 gl.ARRAY_BUFFER 中写入数据
+          // 先往缓冲区 gl.ARRAY_BUFFER 中写入新的顶点数据
           gl.bufferData(
             gl.ARRAY_BUFFER,
             // 注意，着色器程序中的变量需要强类型数据，所以我们在往缓冲区写数据的时候，JS 的弱类型数组一定要用类型化数组 Float32Array 转化一下
@@ -108,6 +108,7 @@
           );
           let color = randomColor();
           gl.uniform4f(u_Color, color.r, color.g, color.b, color.a);
+          // 开始渲染
           render(gl);
         }
       });
@@ -124,7 +125,7 @@
         // 从顶点数组的开始位置取顶点数据
         let drawOffset = 0;
         if (positions.length > 0) {
-          // 绘制
+          //因为我们要绘制 N 个点，所以执行 N 次顶点绘制操作。
           gl.drawArrays(primitiveType, drawOffset, positions.length / 2);
         }
       }
