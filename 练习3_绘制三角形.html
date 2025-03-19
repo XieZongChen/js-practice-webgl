@@ -77,6 +77,7 @@
       // 绑定该缓冲区为 WebGL 当前缓冲区 gl.ARRAY_BUFFER，绑定之后，对缓冲区绑定点的的任何操作都会基于该缓冲区（即 buffer）进行
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
 
+      // 启用属性 a_Position
       gl.enableVertexAttribArray(a_Position);
       //一个顶点信息包含两个数据。
       let size = 2;
@@ -84,12 +85,14 @@
       let type = gl.FLOAT;
       //我们自己在着色器中进行的归一化处理，所以此处设置为false
       let normalize = false;
-      //步长为默认值 0 ，即按照 size*type的值。
+      //步长为默认值 0 ，即按照 size*type的值
       let stride = 0;
-      //顶点信息从 buffer 中取数据时的偏移值。
+      //顶点信息从 buffer 中取数据时的偏移值
       let offset = 0;
-
-      // 顶点如何从 buffer 中取数据。
+      /**
+       * 将 a_Position 变量获取数据的缓冲区指向当前绑定的 buffer 缓冲区
+       * 注意，通过 gl.vertexAttribPointer 将属性绑定到了当前的缓冲区，即使之后使用 bindBuffer 绑定到其他缓冲区时，a_Position 也依然会从 buffer 这个缓冲区中获取数据
+       */
       gl.vertexAttribPointer(a_Position, size, type, normalize, stride, offset);
 
       canvas.addEventListener('click', (e) => {
