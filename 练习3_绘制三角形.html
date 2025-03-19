@@ -68,7 +68,9 @@
       let u_Color = gl.getUniformLocation(program, 'u_Color');
 
       gl.vertexAttrib2f(a_Screen_Size, canvas.width, canvas.height);
-      let positions = [];
+
+      // 存储三角形顶点，x y 坐标按顺序存储，例如 [1, 0, 0, 1, 0, 0]，使用时 idx 为偶数时为 x 坐标，为奇数时为 y 坐标，一个偶数 idx 的值和紧随其后奇数 idx 的值组成一个点。
+      let positions = []; 
 
       let buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
