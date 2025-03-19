@@ -74,6 +74,7 @@
 
       // 创建一个缓冲区，通过缓冲区可以向着色器传递多个顶点数据
       let buffer = gl.createBuffer();
+      // 绑定该缓冲区为 WebGL 当前缓冲区 gl.ARRAY_BUFFER，绑定之后，对缓冲区绑定点的的任何操作都会基于该缓冲区（即 buffer）进行
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
 
       gl.enableVertexAttribArray(a_Position);
@@ -93,10 +94,12 @@
 
       canvas.addEventListener('click', (e) => {
         positions.push(e.pageX, e.pageY);
-        // 顶点信息为6个数据即3个顶点时执行绘制操作，因为三角形由三个顶点组成。
+        // 顶点信息为 6 个数据即 3 个顶点时执行绘制操作，因为三角形由三个顶点组成。
         if (positions.length % 6 == 0) {
+          // 先往缓冲区 gl.ARRAY_BUFFER 中写入数据
           gl.bufferData(
             gl.ARRAY_BUFFER,
+            // 注意，着色器程序中的变量需要强类型数据，所以我们在往缓冲区写数据的时候，JS 的弱类型数组一定要用类型化数组 Float32Array 转化一下
             new Float32Array(positions),
             gl.STATIC_DRAW
           );
