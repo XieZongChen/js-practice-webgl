@@ -23,6 +23,10 @@
   - gl.TRIANGLES：基本三角形
   - gl.TRIANGLE_STRIP：三角带
   - gl.TRIANGLE_FAN：三角扇
+- 线段图元分类
+  - LINES：基本线段
+  - LINE_STRIP：带状线段
+  - LINE_LOOP：环状（闭环）线段
 - 连接着色器程序
   - `createShader`：创建着色器对象
   - `shaderSource`：提供着色器源码
