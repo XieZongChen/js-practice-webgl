@@ -66,6 +66,7 @@
       gl.enableVertexAttribArray(a_Position);
       gl.enableVertexAttribArray(a_Color);
 
+      // 只创建一个 buffer 同时传递两种信息，所以一个顶点在 buffer 中占 6 个位置（坐标 x、y 两个，颜色 R、G、B、A 四个）
       let buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
       gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 24, 0);
