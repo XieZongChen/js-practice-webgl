@@ -62,24 +62,13 @@
    - 合批（Batching）：同一 Buffer 中的多属性数据可支持单次 gl.drawArrays 调用绘制复杂模型，避免因分批次绘制产生的性能瓶颈。
    - 实例化（Instancing）：结合 gl.vertexAttribDivisor ，可复用 Buffer 中的结构化数据高效渲染大量重复对象（如粒子系统）。
 4. 简化数据管理
-   统一生命周期：所有顶点相关属性共享同一 Buffer 对象，避免多 Buffer 的创建/销毁带来的资源管理复杂度。
-   兼容 WebGL 2.0 优化：支持 VAO（Vertex Array Object） 将 Buffer 配置与着色器属性绑定固化，进一步提升多模型切换效率。
+   - 统一生命周期：所有顶点相关属性共享同一 Buffer 对象，避免多 Buffer 的创建/销毁带来的资源管理复杂度。
+   - 兼容 WebGL 2.0 优化：支持 VAO（Vertex Array Object） 将 Buffer 配置与着色器属性绑定固化，进一步提升多模型切换效率。
 5. 典型应用场景
-   动态数据更新：如骨骼动画中顶点位置与权重的实时更新，通过单 Buffer 的 gl.bufferSubData 局部更新更高效。
-   流式渲染：在实时生成顶点数据（如地形、流体模拟）时，单 Buffer 的双缓冲（Ping-Pong）机制可避免卡顿。
-   数据布局示例（伪代码）
-   // 单个 Buffer 存储位置（vec3） + 颜色（vec3） + UV（vec2）
-   const data = new Float32Array([
-   // 顶点 1: x, y, z, r, g, b, u, v
-   0, 0, 0, 1, 0, 0, 0.5, 0.5,
-   // 顶点 2: ...
-   ]);
+   - 动态数据更新：如骨骼动画中顶点位置与权重的实时更新，通过单 Buffer 的 gl.bufferSubData 局部更新更高效。
+   - 流式渲染：在实时生成顶点数据（如地形、流体模拟）时，单 Buffer 的双缓冲（Ping-Pong）机制可避免卡顿。
 
-// 配置属性
-gl.vertexAttribPointer(positionLoc, 3, gl.FLOAT, false, 8*4, 0); // 步长 8*4，偏移 0
-gl.vertexAttribPointer(colorLoc, 3, gl.FLOAT, false, 8*4, 3*4); // 偏移 3*4
-gl.vertexAttribPointer(uvLoc, 2, gl.FLOAT, false, 8*4, 6*4); // 偏移 6*4
-注意事项
-数据类型对齐：需确保步长（stride）与硬件内存对齐要求匹配（如 4 字节对齐）。
-移动端优化：部分低端 GPU 对多属性 Buffer 的访问效率敏感，需实测性能差异。
-通过集中存储数据，WebGL 应用可在复杂场景中实现更高的帧率和更流畅的交互体验。
+> 注意事项
+> 数据类型对齐：需确保步长（stride）与硬件内存对齐要求匹配（如 4 字节对齐）。
+> 移动端优化：部分低端 GPU 对多属性 Buffer 的访问效率敏感，需实测性能差异。
+> 通过集中存储数据，WebGL 应用可在复杂场景中实现更高的帧率和更流畅的交互体验。
