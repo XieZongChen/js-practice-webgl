@@ -85,6 +85,12 @@
         colors.push(color.r, color.g, color.b, color.a);
         // 顶点信息为6个数据即3个顶点时执行绘制操作，因为三角形由三个顶点组成。
         if (positions.length % 6 == 0) {
+          /**
+           * 注意
+           * 程序中如果有多个 buffer 的时候，在切换 buffer 进行操作时，
+           * 一定要通过调用 gl.bindBuffer 将要操作的 buffer 绑定到 gl.ARRAY_BUFFER 上，这样才能正确地操作 buffer。
+           * 可以将 bindBuffer 理解为一个状态机，bindBuffer 之后的对 buffer 的一些操作，都是基于最近一次绑定的 buffer 来进行的
+           */
           //复制坐标信息到缓冲区中
           gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
           gl.bufferData(
