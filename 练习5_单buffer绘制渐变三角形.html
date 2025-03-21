@@ -69,6 +69,7 @@
       // 只创建一个 buffer 同时传递两种信息，所以一个顶点在 buffer 中占 6 个位置（坐标 x、y 两个，颜色 R、G、B、A 四个）
       let buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      // stride 代表一个顶点信息所占用的字节数，一个顶点占用 6 个元素，每个元素占用 4 字节，所以，stride = 4 * 6 = 24 个字节
       // 坐标信息占用 2 个元素，故 size 设置为 2。 坐标信息是从第一个元素开始读取，偏移值为 0，所以 offset 设置为 0
       gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 24, 0);
       // 由于 color 信息占用 4 个元素，所以 size 设置为 4。 color 信息是在坐标信息之后，偏移两个元素所占的字节（2 * 4 = 8）。所以，offset 设置为 8
@@ -78,10 +79,13 @@
       gl.clearColor(0, 0, 0, 1);
 
       canvas.addEventListener('click', (e) => {
+        // 当点击时确定一个顶点，所以先将坐标信息存入 positions 中
         positions.push(e.pageX, e.pageY);
+        // 随机一个颜色并存入 positions 中
         let color = randomColor();
         positions.push(color.r, color.g, color.b, color.a);
-        // 顶点信息为 18 的整数倍即3个顶点时执行绘制操作，因为三角形由三个顶点组成，每个顶点由六个元素组成。
+
+        // 顶点信息为 18 的整数倍即 3 个顶点时执行绘制操作，因为三角形由三个顶点组成，每个顶点由六个元素组成。
         if (positions.length % 18 == 0) {
           gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
           gl.bufferData(
