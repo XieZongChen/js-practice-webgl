@@ -151,6 +151,7 @@ function createProgramFromScript(gl, vertexScriptId, fragmentScriptId) {
   let program = createProgram(gl, vertexShader, fragmentShader);
   return program;
 }
+
 function createBuffer(gl, attribute, vertexAttribPointer) {
   let { size, type, normalize, stride, offset } = vertexAttribPointer;
   gl.enableVertexAttribArray(attribute);
