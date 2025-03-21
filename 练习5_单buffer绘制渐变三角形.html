@@ -69,7 +69,9 @@
       // 只创建一个 buffer 同时传递两种信息，所以一个顶点在 buffer 中占 6 个位置（坐标 x、y 两个，颜色 R、G、B、A 四个）
       let buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      // 坐标信息占用 2 个元素，故 size 设置为 2。 坐标信息是从第一个元素开始读取，偏移值为 0，所以 offset 设置为 0
       gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 24, 0);
+      // 由于 color 信息占用 4 个元素，所以 size 设置为 4。 color 信息是在坐标信息之后，偏移两个元素所占的字节（2 * 4 = 8）。所以，offset 设置为 8
       gl.vertexAttribPointer(a_Color, 4, gl.FLOAT, false, 24, 8);
 
       //设置清屏颜色为黑色。
