@@ -51,10 +51,9 @@
 ### 单 Buffer 存储多个信息数据的优势
 
 将多个信息（如顶点位置、颜色、纹理坐标等）集中到一个 Buffer 中传递，主要通过 **结构化存储数据** 实现高效渲染，具体优势如下:
-
 1. 减少 API 调用开销
-传统方式：每个顶点属性（如位置、颜色）需单独绑定 Buffer 并调用 gl.vertexAttribPointer ，导致多次状态切换。
-集中存储：通过 单 Buffer 多属性 的布局（使用 stride 和 offset 参数），仅需一次 bindBuffer 和 vertexAttribPointer 调用，显著降低 WebGL 状态机切换的 CPU 开销。
+    - 传统方式：每个顶点属性（如位置、颜色）需单独绑定 Buffer 并调用 gl.vertexAttribPointer ，导致在数据存入缓冲区时需要多次状态切换状态机（bindBuffer）。
+    - 集中存储：通过 单 Buffer 多属性 的布局（使用 stride 和 offset 参数），仅需一次 bindBuffer 和 vertexAttribPointer 调用，显著降低 WebGL 状态机切换的 CPU 开销。
 2. 提升 GPU 数据吞吐效率
 内存连续性：集中存储的数据在显存中连续排列，减少 GPU 访问碎片化数据时的缓存未命中问题。
 批量传输：通过 gl.bufferData 一次性写入全部数据（如顶点 + 颜色 + UV），避免多次数据传输的等待时间。
