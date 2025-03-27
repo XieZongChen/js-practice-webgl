@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>纹理贴图</title>
-    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="./css/common.css" />
   </head>
 
   <body>
@@ -33,9 +33,9 @@
           gl_FragColor = texture2D(u_Texture, vec2(v_Uv.x, v_Uv.y));
       }
     </script>
-    <script src="../utils/webgl-helper.js"></script>
-    <script src="../utils/vector3.js"></script>
-    <script src="../utils/webgl-matrix.js"></script>
+    <script src="./utils/webgl-helper.js"></script>
+    <script src="./utils/vector3.js"></script>
+    <script src="./utils/webgl-matrix.js"></script>
     <script>
       //获取canvas
       let canvas = getCanvas('#canvas');
@@ -91,7 +91,7 @@
         gl.drawArrays(gl.TRIANGLES, 0, positions.length / 4);
       }
 
-      loadTexture(gl, '../img/wave.jpg', u_Texture, function () {
+      loadTexture(gl, './img/wave.jpg', u_Texture, function () {
         render();
       });
     </script>
