@@ -45,6 +45,14 @@
     </script>
     <script src="./utils/webgl-helper.js"></script>
     <script>
+      /**
+       * 生成指定圆环的两个圆周的绘制顶点
+       * x：圆心的 x 坐标
+       * y：圆心的 y 坐标
+       * innerRadius：内圆周半径
+       * outerRadius：外圆周半径
+       * n：三角形的数量。以两个绘制顶点和圆心组成一个三角形，三角形数量越多，圆形越平滑。
+       */
       function createRingVertex(x, y, innerRadius, outerRadius, n) {
         let positions = [];
         let color = randomColor();
