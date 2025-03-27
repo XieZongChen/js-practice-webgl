@@ -45,6 +45,13 @@
     </script>
     <script src="./utils/webgl-helper.js"></script>
     <script>
+      /**
+       * 生成指定圆的圆周的绘制顶点
+       * x：圆心的 x 坐标
+       * y：圆心的 y 坐标
+       * radius：半径
+       * n：三角形的数量
+       */
       function createCircleVertex(x, y, radius, n) {
         let positions = [x, y, 255, 255, 0, 1];
         for (let i = 0; i <= n; i++) {
