@@ -33,37 +33,51 @@
     - X 轴：[-1, 1]
     - Y 轴：[-1, 1]
 
-## WebGL
+## 常用 WebGL API
 
-- drawArrays: 用指定的图元进行绘制
-- gl.POINTS: 将绘制图元类型设置成点图元
-- 三角形图元分类
-  - gl.TRIANGLES：基本三角形
-  - gl.TRIANGLE_STRIP：三角带
-  - gl.TRIANGLE_FAN：三角扇
-- 线段图元分类
-  - LINES：基本线段
-  - LINE_STRIP：带状线段
-  - LINE_LOOP：环状（闭环）线段
-- 连接着色器程序
-  - `createShader`：创建着色器对象
-  - `shaderSource`：提供着色器源码
-  - `compileShader`：编译着色器对象
-  - `createProgram`：创建着色器程序
-  - `attachShader`：绑定着色器对象
-  - `linkProgram`：链接着色器程序
-  - `useProgram`：启用着色器程序
-- 给着色器传递数据
-  - `getAttribLocation`：找到着色器中的 attribute 变量地址
-  - `getUniformLocation`：找到着色器中的 uniform 变量地址
-  - `vertexAttrib2f`：给 attribute 变量传递两个浮点数
-  - `uniform4f`：给 uniform 变量传递四个浮点数。
-- 使用缓冲区传递数据
-  - `createBuffer`：创建 buffer
-  - `bindBuffer`：绑定某个缓冲区对象为当前缓冲区
-  - `bufferData`：往缓冲区中复制数据
-  - `enableVertexAttribArray`：启用顶点属性
-  - `vertexAttribPointer`：设置顶点属性从缓冲区中读取数据的方式
+- shader：着色器对象
+  - gl.createShader：创建着色器。
+  - gl.shaderSource：指定着色器源码。
+  - gl.compileShader：编译着色器。
+program：着色器程序
+gl.createProgram：创建着色器程序。
+gl.attachShader：链接着色器对象。
+gl.linkProgram：链接着色器程序。
+gl.useProgram：使用着色器程序。
+attribute：着色器属性
+gl.getAttribLocation：获取顶点着色器中的属性位置。
+gl.enableVertexAttribArray：启用着色器属性。
+gl.vertexAttribPointer：设置着色器属性读取 buffer 的方式。
+gl.vertexAttrib2f：给着色器属性赋值，值为两个浮点数。
+gl.vertexAttrib3f：给着色器属性赋值，值为三个浮点数。
+uniform：着色器全局属性
+gl.getUniformLocation：获取全局变量位置。
+gl.uniform4f：给全局变量赋值 4 个浮点数。
+gl.uniform1i：给全局变量赋值 1 个整数。
+buffer：缓冲区
+gl.createBuffer：创建缓冲区对象。
+gl.bindBuffer：将缓冲区对象设置为当前缓冲。
+gl.bufferData：向当前缓冲对象复制数据。
+clear：清屏
+gl.clearColor：设置清除屏幕的背景色。
+gl.clear：清除屏幕。
+draw：绘制
+gl.drawArrays：数组绘制方式。
+gl.drawElements：索引绘制方式。
+图元
+gl.POINTS：点。
+gl.LINE：基本线段。
+gl.LINE_STRIP：连续线段。
+gl.LINE_LOOP：闭合线段。
+gl.TRIANGLES：基本三角形。
+gl.TRIANGLE_STRIP：三角带。
+gl.TRIANGLE_FAN：三角扇。
+纹理
+gl.createTexture：创建纹理对象。
+gl.activeTexture：激活纹理单元。
+gl.bindTexture：绑定纹理对象到当前纹理。
+gl.texImage2D：将图片数据传递给 GPU。
+gl.texParameterf：设置图片放大缩小时的过滤算法。
 
 ### 单 Buffer 存储多个信息数据的优势
 
